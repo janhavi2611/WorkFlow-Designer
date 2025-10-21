@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+  <!-- Left: Add form -->
+  <div class="col-lg-4 mb-4">
+    <div class="card card-todo p-3">
+      <div class="card-body">
+        <h5 class="card-title">Add New Todo</h5>
+        <form method="post" action="{% url 'add_todo' %}">
+          {% csrf_token %}
+          {{ form.title.label_tag }} {{ form.title }}
+          {{ form.description.label_tag }} {{ form.description }}
+          <div class="form-row">
+            <div class="form-group col">
+              {{ form.due_date.label_tag }} {{ form.due_date }}
+            </div>
+            <div class="form-group col">
+              {{ form.priority.label_tag }} {{ form.priority }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              {{ form.category.label_tag }} {{ form.category }}
+            </div>
+            <div class="form-group col">
+              {{ form.status.label_tag }} {{ form.status }}
+            </div>
+          </div>
+          <button class="btn btn-info btn-block">Add</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="card mt-3 p-3">
+      <div>
+        <div class="d-flex justify-content-between">
+          <small class="text-muted">Progress</small>
+          <small class="text-muted">{{completed}} / {{total}}</small>
+        </div>
+        <div class="progress mt-2" style="height:10px;">
+          <div class="progress-bar" role="progressbar" style="width: {{ progress }}%;" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100">{{ progress }}%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Todo list, search & filters -->
+  <div class="col-lg-8">
+    <div class="mb-3">
+      <form method="get" class="form-inline">
+        <input name="q" class="form-control mr-2" placeholder="Search title or description" value="{{q}}">
+        <select name="category" class="form-control mr-2">
+          <option value="">All categories</option>
+          <option value="Personal" {% if category == 'Personal' %}selected{% endif %}>Personal</option>
+          <option value="Work" {% if category == 'Work' %}selected{% endif %}>Work</option>
+          <option value="Study" {% if category == 'Study' %}selected{% endif %}>Study</option>
+          <option value="Shopping" {% if category == 'Shopping' %}selected{% endif %}>Shopping</option>
+        </select>
+        <select name="status" class="form-control mr-2">
+          <option value="">All status</option>
+          <option value="P" {% if status == 'P' %}selected{% endif %}>Pending</option>
+          <option value="C" {% if status == 'C' %}selected{% endif %}>Completed</option>
+        </select>
+        <select name="order" class="form-control mr-2">
+          <option value="priority" {% if order == 'priority' %}selected{% endif %}>Priority</option>
+          <option value="date" {% if order == 'date' %}selected{% endif %}>Newest</option>
+          <option value="due" {% if order == 'due' %}selected{% endif %}>Due date</option>
+        </select>
+        <button class="btn btn-outline-secondary">Filter</button>
+      </form>
+    </div>
+
+    {% if todos|length == 0 %}
+      <div class="alert alert-info text-center">No todos yet — add your first task!</div>
+    {% else %}
+      <div class="list-group">
+        {% for todo in todos %}
+          <div class="list-group-item mb-2 card p-3">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h5 class="mb-1 {% if todo.status == 'C' %}completed{% endif %}">{{ todo.title }}</h5>
+                {% if todo.description %}
+                  <p class="todo-desc mb-1">{{ todo.description }}</p>
+                {% endif %}
+                <small class="text-muted">Category: {{ todo.category }} · Priority: {{ todo.priority }} · Added: {{ todo.date|date:"M d, Y" }}</small>
+                {% if todo.due_date %}
+                  <div><small>Due: {{ todo.due_date|date:"M d, Y" }}</small></div>
+                {% endif %}
+                {% if todo.status == 'C' and todo.completed_at %}
+                  <div><small class="text-success">Completed: {{ todo.completed_at|date:"M d, Y H:i" }}</small></div>
+                {% endif %}
+              </div>
+              <div class="text-right">
+                {% if todo.status == 'P' %}
+                  <a href="/change-status/{{todo.id}}/C" class="btn btn-sm btn-success mb-1" title="Mark Completed"><i class="fas fa-check"></i></a>
+                {% else %}
+                  <a href="/change-status/{{todo.id}}/P" class="btn btn-sm btn-warning mb-1" title="Mark Pending"><i class="fas fa-history"></i></a>
+                {% endif %}
+                <a href="{% url 'edit_todo' todo.id %}" class="btn btn-sm btn-primary mb-1" title="Edit"><i class="fas fa-edit"></i></a>
+                <a href="/delete-todo/{{todo.id}}" class="btn btn-sm btn-danger mb-1" onclick="return confirm('Delete this todo?');" title="Delete"><i class="fas fa-trash"></i></a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+/* === GLOBAL STYLING === */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #74ABE2, #5563DE);
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* === CONTAINER / CARD === */
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  margin-top: 2rem;
+}
+
+/* === HEADINGS === */
+h2, h3, h4 {
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* === BUTTONS === */
+.btn-custom {
+  background: linear-gradient(90deg, #00C9FF, #92FE9D);
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* === INPUTS === */
+input, textarea {
+  border-radius: 12px !important;
+  border: none !important;
+  padding: 10px !important;
+}
+
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: rgba(255,255,255,0.8);
+  margin-top: 3rem;
+  font-size: 14px;
+}
