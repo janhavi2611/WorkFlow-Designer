@@ -13,7 +13,7 @@ This project was developed as part of our **Python Mini Project**.
 
 | Name | Role |
 |------|------|
-| **Janhavi Jadhav** | Team Leader & Backend Developer |
+| **Janhavi Jadhav** | Backend Developer |
 | **Shravanee Kumbhar** | Frontend Developer |
 | **Diksha More** | UI/UX Designer |
 | **Sejal Wable** | Database & Testing |
