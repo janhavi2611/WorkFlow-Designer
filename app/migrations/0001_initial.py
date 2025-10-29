@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=50)),
-                ('status', models.CharField(choices=[('C', 'COMPLETED'), ('F', 'PENDING')], max_length=2)),
+                ('status', models.CharField(choices=[('C', 'COMPLETED'), ('P', 'PENDING')], max_length=2)),
                 ('date', models.DateTimeField(auto_now_add=True)),
                 ('priority', models.CharField(choices=[('1', '①'), ('2', '②'), ('3', '③'), ('4', '④'), ('5', '⑤'), ('6', '⑥'), ('7', '⑦'), ('8', '⑧'), ('9', '⑨'), ('10', '⑩')], max_length=2)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),

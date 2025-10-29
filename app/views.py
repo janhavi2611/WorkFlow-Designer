@@ -11,29 +11,50 @@ from django.db.models import Q
 def home(request):
     user = request.user
     form = TODOForm()
-    # Filtering & search (use GET params)
-    q = request.GET.get('q', '')  # search query
-    category = request.GET.get('category', '')
-    status = request.GET.get('status', '')
-    order = request.GET.get('order', 'priority')  # ordering field
+    
+    # --- GET FILTER PARAMETERS ---
+    # Retrieve filter values from the URL query string (GET request)
+    search_query = request.GET.get('q', '')      # Search box value
+    category_filter = request.GET.get('category', '') # Category dropdown value
+    status_filter = request.GET.get('status', '')    # Status dropdown value
+    priority_filter = request.GET.get('priority', '') # <--- NEW: Priority dropdown value
+    order_by = request.GET.get('order', 'priority')  # Ordering field
+    # -----------------------------
 
+    # Start with all todos for the logged-in user
     todos = TODO.objects.filter(user=user)
 
-    if q:
-        todos = todos.filter(Q(title__icontains=q) | Q(description__icontains=q))
-    if category:
-        todos = todos.filter(category=category)
-    if status:
-        todos = todos.filter(status=status)
+    # 1. Apply Search Filter (checks title or description)
+    if search_query:
+        todos = todos.filter(
+            Q(title__icontains=search_query) | Q(description__icontains=search_query)
+        )
+        
+    # 2. Apply Category Filter
+    # Check if a category is selected (not 'All Category', which submits an empty string)
+    if category_filter:
+        todos = todos.filter(category=category_filter)
+        
+    # 3. Apply Status Filter
+    # Check if a status is selected (not 'All Status', which submits an empty string)
+    if status_filter:
+        todos = todos.filter(status=status_filter)
+        
+    # 4. Apply Priority Filter (<--- NEW LOGIC)
+    # Check if a priority is selected (not 'All Priority', which submits an empty string)
+    if priority_filter:
+        todos = todos.filter(priority=priority_filter)
 
-    if order == 'date':
+    # 5. Apply Ordering
+    if order_by == 'date':
         todos = todos.order_by('-date')
-    elif order == 'due':
+    elif order_by == 'due':
         todos = todos.order_by('due_date')
     else:
+        # Default sort by priority (assuming priority is a field that sorts naturally, e.g., an integer field)
         todos = todos.order_by('priority')
 
-    # progress: percent completed
+    # Progress calculation
     total = todos.count()
     completed = todos.filter(status='C').count()
     progress = int((completed / total) * 100) if total > 0 else 0
@@ -41,10 +62,11 @@ def home(request):
     context = {
         'form': form,
         'todos': todos,
-        'q': q,
-        'category': category,
-        'status': status,
-        'order': order,
+        'q': search_query,
+        'category_filter': category_filter,
+        'status_filter': status_filter,
+        'priority_filter': priority_filter, # <--- NEW: Pass filter back to template
+        'order_by': order_by,
         'progress': progress,
         'total': total,
         'completed': completed,
@@ -96,7 +118,7 @@ def add_todo(request):
             todo.save()
             return redirect("home")
         else:
-            # re-render with validation errors
+            # re-render with validation errors (if you want to re-render, you need to grab filters/todos)
             todos = TODO.objects.filter(user=user).order_by('priority')
             return render(request, 'index.html', context={'form': form, 'todos': todos})
     return redirect('home')
