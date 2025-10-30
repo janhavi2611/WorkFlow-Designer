@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login as loginUser, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from app.forms import TODOForm
-from app.models import TODO
+from app.models import TODO 
 from django.utils import timezone
 from django.db.models import Q
 
