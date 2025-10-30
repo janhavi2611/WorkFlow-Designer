@@ -10,9 +10,9 @@ Developed as part of the **Python Mini Project** for academic evaluation.
 | Name | Contribution |
 |------|---------------|
 | **Diksha More** | Authentication, documentation, UI/UX |
-| **Janhavi Jadhav** | Backend |
-| **Shravanee Kumbhar** | Frontend |
-| **Sejal Wable** | Database |
+| **Janhavi Jadhav** | Backend Development, Model Designing, Testing |
+| **Shravanee Kumbhar** | Frontend Development, UI design, Task Interface Enhancements |
+| **Sejal Wable** | Database connection, Feature Planning, Code review |
 
 ---
 
