@@ -1,3 +1,4 @@
+#urls
 from django.urls import path
 from app.views import home, login, signup, add_todo, signout, delete_todo, change_todo, edit_todo
 
