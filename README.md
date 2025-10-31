@@ -112,7 +112,6 @@ The project follows Django’s **Model–View–Template (MVT)** structure:
 ---
 
 ## 🧠 Concepts Learned
-
 During the development of this project, our team learned and implemented the following core concepts:
 
 ### 🔹 **Python & Django Concepts**
