@@ -3,3 +3,26 @@ djangorestframework==3.15.2
 sqlparse==0.5.3
 asgiref==3.10.0
 tzdata==2025.2
+
+Steps to Run the Project:
+# 1. Clone the repository
+git clone https://github.com/yourusername/todo-project.git
+cd todo-project
+
+# 2. Create and activate virtual environment
+python -m venv venv
+venv\Scripts\activate   # On Windows
+source venv/bin/activate  # On Mac/Linux
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Apply migrations
+python manage.py migrate
+
+# 5. Run the development server
+python manage.py runserver
+
+Now, navigate to:
+http://localhost:8000
+to view and interact with the To-Do List web application.
