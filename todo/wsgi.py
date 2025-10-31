@@ -1,4 +1,4 @@
-""" wsgi 
+""" wsgi file 
 WSGI config for todo project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
