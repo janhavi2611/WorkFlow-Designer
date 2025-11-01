@@ -157,7 +157,7 @@ During the development of this project, our team learned and implemented the fol
 ## 📸 Screenshots (App Flow)
 
 ### 🏠 Home / Dashboard
-<img width="1864" height="884" alt="Screenshot 2025-10-30 210124" src="https://github.com/user-attachments/assets/00c30c4a-c41b-48bd-ae0d-b20ed0171638" />
+<img width="1920" height="874" alt="Home" src="https://github.com/user-attachments/assets/f42a0e81-8331-452e-9b78-05bab45b9914" />
 
 
 ### ➕ Add New Task
