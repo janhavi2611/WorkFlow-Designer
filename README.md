@@ -9,8 +9,8 @@ Developed as part of the **Python Mini Project** for academic evaluation.
 
 | Name | Contribution |
 |------|---------------|
-| **Diksha More** | Authentication, documentation, UI/UX |
-| **Janhavi Jadhav** | Backend Development, Model Designing, Testing |
+| **Diksha More** | Authentication, Documentation, UI/UX |
+| **Janhavi Jadhav** | Backend Development, Model Designing, App Deployment |
 | **Shravanee Kumbhar** | Frontend Development, UI design, Task Interface Enhancements |
 | **Sejal Wable** | Database connection, Feature Planning, Code review |
 
@@ -136,10 +136,8 @@ During the development of this project, our team learned and implemented the fol
 2. **Dynamic Filtering and Sorting:**  
    Implementing combined filters for category, status, and priority while maintaining performance.
 
-
 3. **Responsive UI Issues:**  
    Adjusting layouts for mobile screens using CSS and Bootstrap grid system.
-
 
 ---
 
@@ -150,7 +148,6 @@ During the development of this project, our team learned and implemented the fol
 - 🗓️ **Calendar Integration:** Visual calendar view for all tasks.  
 - 🌙 **Dark Mode:** Toggle between light and dark themes.  
 - 🔍 **Advanced Filters:** Search by date range or keyword tags.
-  
 
 ---
 
@@ -161,7 +158,12 @@ During the development of this project, our team learned and implemented the fol
 
 
 ### ➕ Add New Task
-<img width="1882" height="870" alt="Screenshot 2025-10-30 210201" src="https://github.com/user-attachments/assets/a80c71b4-3b97-4ab3-aca0-00652f728b99" />
+<img width="1902" height="902" alt="Task (1)" src="https://github.com/user-attachments/assets/b3fecde0-da1e-4808-9886-e8889de8cf2d" />
+
+
+### 🔐 Login Page
+<img width="1637" height="865" alt="login" src="https://github.com/user-attachments/assets/8de82eab-2f9c-4aca-bbe1-2abc17d814eb" />
+
 
 
 ---
