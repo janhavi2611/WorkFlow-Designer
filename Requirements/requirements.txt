@@ -25,4 +25,4 @@ python manage.py runserver
 
 Now, navigate to:
 http://localhost:8000
-to view and interact with the To-Do List web application.
+to access TODO webapp
